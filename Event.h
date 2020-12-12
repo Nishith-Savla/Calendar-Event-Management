@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ using namespace std;
 class Event {
     string name;
     string description;
-    int dateOfCompletion[3]{};
+    vector<int> dateOfCompletion{3};
 //    bool doesRepeat; TODO add repeat feature
     bool hasCompleted{};
     static int totalEvents;
@@ -34,13 +35,13 @@ public:
         this->description = description;
     }
 
-    const int *getDateOfCompletion() const {
+    const vector<int> getDateOfCompletion() const {
         return dateOfCompletion;
     }
 
-    void setDateOfCompletion(int date[]) {
-        for (int i = 0; i < sizeof(date) / sizeof(int); ++i) {
-            this->dateOfCompletion[i] = date[i];
+    void setDateOfCompletion(vector<int> dateOfCompletion) {
+        for(int i = 0; i < dateOfCompletion.size(); i++) {
+            this->dateOfCompletion[i] = dateOfCompletion[i];
         }
     }
 
@@ -52,7 +53,7 @@ public:
         this->hasCompleted = hasCompleted;
     }
 
-    void checkCompleted(const int currentDate[]);
+    void checkCompleted(const vector<int> currentDate);
 
     static int getTotalEvents() {
         return totalEvents;
@@ -60,7 +61,7 @@ public:
 
     Event();
 
-    Event(const string& name, const string& description, int date[]);
+    Event(const string& name, const string& description, vector<int> dateOfCompletion);
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H

@@ -3,21 +3,21 @@
 //
 
 #include "Event.h"
+#include <vector>
 
 Event::Event() {
     ++Event::totalEvents;
 }
 
-Event::Event(const string& name, const string& description, int date[]) : Event() {
+Event::Event(const string& name, const string& description, vector<int> dateOfCompletion):Event() {
     this->setName(name);
     this->setDescription(description);
-    this->setDateOfCompletion(date);
-
+    this->setDateOfCompletion(dateOfCompletion);
 }
 
 int Event::totalEvents = 0;
 
-void Event::checkCompleted(const int currentDate[]) {
+void Event::checkCompleted(const vector<int> currentDate) {
     if (currentDate[2] > this->dateOfCompletion[2]) {
         this->hasCompleted = true;
     } else if (currentDate[2] == this->dateOfCompletion[2]) {
