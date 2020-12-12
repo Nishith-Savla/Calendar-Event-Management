@@ -3,6 +3,7 @@
 //#include <sqlite3.h>
 #include <cstring>
 #include <vector>
+#include "Event.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ int *getTodaysDate() {
     return date;
 }
 
-vector<string> split(string s, string delimiter) {
+vector<string> split(const string& s, const string& delimiter) {
     size_t pos_start = 0, pos_end, delimiter_len = delimiter.length();
     string token;
     vector<string> split_strings;
@@ -43,8 +44,13 @@ int main() {
     for (auto i : dateSplit) {
         date.push_back(stoi(i));
     }
-
+    for (auto a: date) cout << a << endl;
+    Event e1("Test", "test", date);
+    cout << e1.getName() << endl;
+    cout << e1.getDescription() << endl;
+    cout << "HAS COMPLETED:" << e1.getHasCompleted() << endl;
+    for (auto a: e1.getDateOfCompletion()) cout << a << " ";
+    cout << endl;
 }
-//    Event e1("Test", "test", )
 
 

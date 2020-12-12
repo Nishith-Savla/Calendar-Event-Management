@@ -16,7 +16,7 @@ class Event {
     string description;
     vector<int> dateOfCompletion{3};
 //    bool doesRepeat; TODO add repeat feature
-    bool hasCompleted{};
+    bool hasCompleted = false;
     static int totalEvents;
 public:
     const string &getName() const {
@@ -35,13 +35,14 @@ public:
         this->description = description;
     }
 
-    const vector<int> getDateOfCompletion() const {
+    vector<int> getDateOfCompletion() {
         return dateOfCompletion;
     }
 
     void setDateOfCompletion(vector<int> dateOfCompletion) {
-        for(int i = 0; i < dateOfCompletion.size(); i++) {
-            this->dateOfCompletion[i] = dateOfCompletion[i];
+        this->dateOfCompletion.clear();
+        for(int i = 0; i < dateOfCompletion.size(); ++i) {
+            this->dateOfCompletion.push_back(dateOfCompletion[i]);
         }
     }
 
@@ -53,7 +54,7 @@ public:
         this->hasCompleted = hasCompleted;
     }
 
-    void checkCompleted(const vector<int> currentDate);
+    void checkCompleted(vector<int> currentDate);
 
     static int getTotalEvents() {
         return totalEvents;
