@@ -5,7 +5,7 @@ set(INCLUDE_DIRS "C:/sqlite/")
 set(LIBRARIES sqlite3.dll)
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(CalendarEventManagement main.cpp Event.cpp Event.h cmake-build-debug/Todo.cpp cmake-build-debug/Todo.h)
+add_executable(CalendarEventManagement main.cpp Event.cpp Event.h Todo.cpp Todo.h)
 # For compiler warnings
 target_compile_options(${PROJECT_NAME} PUBLIC -Wall)
 # Including SQLite3's headers

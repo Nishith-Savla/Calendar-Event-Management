@@ -1,3 +1,5 @@
 # Auto gen directories
 .idea/
-cmake-build-debug/Testing/Temporary/*
+
+# Build directory
+cmake-build-debug/

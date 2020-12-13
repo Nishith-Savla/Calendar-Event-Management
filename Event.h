@@ -1,7 +1,3 @@
-//
-// Created by Admin on 12-12-2020.
-//4
-
 #include <iostream>
 #include <vector>
 
@@ -41,7 +37,7 @@ public:
 
     void setDateOfCompletion(vector<int> dateOfCompletion) {
         this->dateOfCompletion.clear();
-        for(int i = 0; i < dateOfCompletion.size(); ++i) {
+        for (int i = 0; i < dateOfCompletion.size(); ++i) {
             this->dateOfCompletion.push_back(dateOfCompletion[i]);
         }
     }
@@ -54,7 +50,7 @@ public:
         this->hasCompleted = hasCompleted;
     }
 
-    void checkCompleted(vector<int> currentDate);
+    void checkCompleted(const vector<int> &currentDate);
 
     static int getTotalEvents() {
         return totalEvents;
@@ -62,7 +58,7 @@ public:
 
     Event();
 
-    Event(const string& name, const string& description, vector<int> dateOfCompletion);
+    Event(const string &name, const string &description, vector<int> dateOfCompletion);
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H

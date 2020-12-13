@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\CalendarEventManagement.dir/objects.a
-C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\CalendarEventManagement.dir/objects.a @CMakeFiles\CalendarEventManagement.dir\objects1.rsp
-C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\CalendarEventManagement.dir/objects.a -Wl,--no-whole-archive  -o CalendarEventManagement.exe -Wl,--out-implib,libCalendarEventManagement.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\CalendarEventManagement.dir\linklibs.rsp

@@ -1,19 +1,15 @@
-//
-// Created by acer on 13-12-2020.
-//
-
-#ifndef CALENDAREVENTMANAGEMENT_TODO_H
-#define CALENDAREVENTMANAGEMENT_TODO_H
-#include <string>
 #include <iostream>
 #include <vector>
 
+#ifndef CALENDAREVENTMANAGEMENT_TODO_H
+#define CALENDAREVENTMANAGEMENT_TODO_H
+
 class Todo {
 private:
-   std::string name;
-   std::vector<int> dueDate;
-   bool hasCompleted = false;
-   static int totalTodos;
+    std::string name;
+    std::vector<int> dueDate;
+    bool hasCompleted = false;
+    static int totalTodos;
 public:
     const std::string &getName() const {
         return name;
@@ -31,7 +27,7 @@ public:
         Todo::dueDate = dueDate;
     }
 
-    bool isHasCompleted() const {
+    bool getHasCompleted() const {
         return hasCompleted;
     }
 
@@ -41,7 +37,7 @@ public:
 
     Todo();
 
-    Todo(std::string name_val,std::vector<int> dueDate);
+    Todo(const std::string &name, const std::vector<int> &dueDate);
 };
 
 
