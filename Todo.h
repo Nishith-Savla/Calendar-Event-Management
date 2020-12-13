@@ -4,40 +4,55 @@
 #ifndef CALENDAREVENTMANAGEMENT_TODO_H
 #define CALENDAREVENTMANAGEMENT_TODO_H
 
+using namespace std;
+
 class Todo {
 private:
-    std::string name;
-    std::vector<int> dueDate;
+    string name;
+    vector<int> dueDate;
     bool hasCompleted = false;
     static int totalTodos;
 public:
-    const std::string &getName() const {
+    const string &getName() const {
         return name;
     }
 
-    void setName(const std::string &name) {
-        Todo::name = name;
+    void setName(const string &name) {
+        this->name = name;
     }
 
-    const std::vector<int> &getDueDate() const {
+    const vector<int> &getDueDate() const {
         return dueDate;
     }
 
-    void setDueDate(const std::vector<int> &dueDate) {
-        Todo::dueDate = dueDate;
+    void setDueDate(const vector<int> &dueDate) {
+        this->dueDate = dueDate;
     }
 
-    bool getHasCompleted() const {
+    bool isCompleted() const {
         return hasCompleted;
     }
 
     void setHasCompleted(bool hasCompleted) {
-        Todo::hasCompleted = hasCompleted;
+        this->hasCompleted = hasCompleted;
+    }
+    
+    static int getTotalTodos() {
+        return totalTodos;
+    }
+
+
+    bool markCompleted() {
+        if (!isCompleted()) {
+            setHasCompleted(true);
+            return true;
+        }
+        return false;
     }
 
     Todo();
 
-    Todo(const std::string &name, const std::vector<int> &dueDate);
+    Todo(const string &name, const vector<int> &dueDate);
 };
 
 

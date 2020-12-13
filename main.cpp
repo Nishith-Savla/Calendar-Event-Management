@@ -32,6 +32,7 @@ vector<string> split(const string &s, const string &delimiter) {
 }
 
 int main() {
+    cout << boolalpha;
     string dateStr = "11/12/2020";
     vector<int> date;
     vector<string> dateSplit = split(dateStr, "/");
@@ -42,12 +43,24 @@ int main() {
     }
 
     Event e1("Test", "test", date);
-    cout << e1.getName() << endl;
-    cout << e1.getDescription() << endl;
-    cout << "HAS COMPLETED:" << e1.getHasCompleted() << endl;
+    cout << "Event name: " << e1.getName() << endl;
+    cout << "Has completed? :" << e1.isCompleted() << endl;
+    cout << "Event description: " << e1.getDescription() << endl;
+    cout << "Event date: ";
     for (auto a: e1.getDateOfCompletion()) cout << a << " ";
     cout << endl;
     e1.checkCompleted(getTodaysDate());
-    cout << e1.getHasCompleted() << endl;
+    cout << "Has completed? :" << e1.isCompleted() << endl;
+    cout << "Total events: " << e1.getTotalEvents() << endl;
 
+    cout << endl;
+    Todo t1("Todo 1", date);
+    cout << "Todo name: " << t1.getName() << endl;
+    cout << "Todo due date: ";
+    for (auto a: t1.getDueDate()) cout << a << " ";
+    cout << endl;
+    cout << "Has completed? :" << t1.isCompleted() << endl;
+    cout << t1.markCompleted() << endl;
+    cout << "Has completed? :" << t1.isCompleted() << endl;
+    cout << "Total todos: " << t1.getTotalTodos() << endl;
 }

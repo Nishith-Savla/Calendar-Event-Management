@@ -10,7 +10,8 @@ using namespace std;
 class Event {
     string name;
     string description;
-    vector<int> dateOfCompletion{3};
+    vector<int> dateOfCompletion;
+
 //    bool doesRepeat; TODO add repeat feature
     bool hasCompleted = false;
     static int totalEvents;
@@ -36,13 +37,11 @@ public:
     }
 
     void setDateOfCompletion(vector<int> dateOfCompletion) {
-        this->dateOfCompletion.clear();
-        for (int i = 0; i < dateOfCompletion.size(); ++i) {
-            this->dateOfCompletion.push_back(dateOfCompletion[i]);
-        }
+        this->dateOfCompletion = std::move(dateOfCompletion);
+//        this->checkCompleted(); TODO add getTodaysDate()
     }
 
-    bool getHasCompleted() const {
+    bool isCompleted() const {
         return hasCompleted;
     }
 
@@ -59,6 +58,7 @@ public:
     Event();
 
     Event(const string &name, const string &description, vector<int> dateOfCompletion);
+
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H
