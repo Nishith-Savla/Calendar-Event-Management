@@ -1,6 +1,6 @@
 //
 // Created by Admin on 12-12-2020.
-//
+//4
 
 #include <iostream>
 #include <vector>
@@ -35,7 +35,7 @@ public:
         this->description = description;
     }
 
-    const vector<int> getDateOfCompletion() const {
+    vector<int> getDateOfCompletion() const {
         return dateOfCompletion;
     }
 
@@ -53,7 +53,7 @@ public:
         this->hasCompleted = hasCompleted;
     }
 
-    void checkCompleted(const vector<int> currentDate);
+    void checkCompleted(vector<int> currentDate);
 
     static int getTotalEvents() {
         return totalEvents;

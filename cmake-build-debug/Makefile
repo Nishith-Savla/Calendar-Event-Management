@@ -169,6 +169,33 @@ Event.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CalendarEventManagement.dir\build.make CMakeFiles/CalendarEventManagement.dir/Event.cpp.s
 .PHONY : Event.cpp.s
 
+Todo.obj: Todo.cpp.obj
+
+.PHONY : Todo.obj
+
+# target to build an object file
+Todo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CalendarEventManagement.dir\build.make CMakeFiles/CalendarEventManagement.dir/Todo.cpp.obj
+.PHONY : Todo.cpp.obj
+
+Todo.i: Todo.cpp.i
+
+.PHONY : Todo.i
+
+# target to preprocess a source file
+Todo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CalendarEventManagement.dir\build.make CMakeFiles/CalendarEventManagement.dir/Todo.cpp.i
+.PHONY : Todo.cpp.i
+
+Todo.s: Todo.cpp.s
+
+.PHONY : Todo.s
+
+# target to generate assembly for a file
+Todo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CalendarEventManagement.dir\build.make CMakeFiles/CalendarEventManagement.dir/Todo.cpp.s
+.PHONY : Todo.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -208,6 +235,9 @@ help:
 	@echo ... Event.obj
 	@echo ... Event.i
 	@echo ... Event.s
+	@echo ... Todo.obj
+	@echo ... Todo.i
+	@echo ... Todo.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -88,6 +88,12 @@
 		<Unit filename="D:/CLion/Calendar-Event-Management/Event.h">
 			<Option target="CalendarEventManagement"/>
 		</Unit>
+		<Unit filename="D:/CLion/Calendar-Event-Management/cmake-build-debug/Todo.cpp">
+			<Option target="CalendarEventManagement"/>
+		</Unit>
+		<Unit filename="D:/CLion/Calendar-Event-Management/cmake-build-debug/Todo.h">
+			<Option target="CalendarEventManagement"/>
+		</Unit>
 		<Unit filename="D:/CLion/Calendar-Event-Management/main.cpp">
 			<Option target="CalendarEventManagement"/>
 		</Unit>

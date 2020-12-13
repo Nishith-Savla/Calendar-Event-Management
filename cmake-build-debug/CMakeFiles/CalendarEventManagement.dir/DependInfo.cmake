@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "D:/CLion/Calendar-Event-Management/Event.cpp" "D:/CLion/Calendar-Event-Management/cmake-build-debug/CMakeFiles/CalendarEventManagement.dir/Event.cpp.obj"
+  "D:/CLion/Calendar-Event-Management/cmake-build-debug/Todo.cpp" "D:/CLion/Calendar-Event-Management/cmake-build-debug/CMakeFiles/CalendarEventManagement.dir/Todo.cpp.obj"
   "D:/CLion/Calendar-Event-Management/main.cpp" "D:/CLion/Calendar-Event-Management/cmake-build-debug/CMakeFiles/CalendarEventManagement.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

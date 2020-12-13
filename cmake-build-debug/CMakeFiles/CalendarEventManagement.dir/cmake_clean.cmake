@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/CalendarEventManagement.dir/Event.cpp.obj"
+  "CMakeFiles/CalendarEventManagement.dir/Todo.cpp.obj"
   "CMakeFiles/CalendarEventManagement.dir/main.cpp.obj"
   "CalendarEventManagement.exe"
   "CalendarEventManagement.exe.manifest"
