@@ -31,3 +31,14 @@ void Event::checkCompleted(const vector<int> &currentDate) {
         }
     }
 }
+
+string Event::dumpToString() {
+    string event;
+    event.append(this->name).append(",");
+    event.append(this->description).append(",");
+    event.append(this->hasCompleted ? "true" : "false").append(",");
+    for (auto dateValue: this->dateOfCompletion) {
+        event.append(to_string(dateValue)).append(" ");
+    }
+    return event;
+}

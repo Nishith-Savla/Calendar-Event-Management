@@ -1,12 +1,13 @@
-#include <iostream>
-#include <vector>
-
 #ifndef CALENDAREVENTMANAGEMENT_TODO_H
 #define CALENDAREVENTMANAGEMENT_TODO_H
 
+#include <iostream>
+#include <vector>
+#include "Functions.cpp"
+
 using namespace std;
 
-class Todo {
+class Todo : public Functions {
 private:
     string name;
     vector<int> dueDate;
@@ -36,7 +37,7 @@ public:
     void setHasCompleted(bool hasCompleted) {
         this->hasCompleted = hasCompleted;
     }
-    
+
     static int getTotalTodos() {
         return totalTodos;
     }
@@ -48,6 +49,12 @@ public:
             return true;
         }
         return false;
+    }
+
+    string dumpToString();
+
+    void dumpToFile(string fileName = "todostorage.csv") {
+        Functions::dumpToFile(this->dumpToString(), fileName);
     }
 
     Todo();
