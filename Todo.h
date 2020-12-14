@@ -8,12 +8,16 @@
 using namespace std;
 
 class Todo : public Functions {
-private:
+    int id = totalTodos + 1;
     string name;
     vector<int> dueDate;
     bool hasCompleted = false;
     static int totalTodos;
 public:
+    int getId() const {
+        return id;
+    }
+
     const string &getName() const {
         return name;
     }
@@ -53,13 +57,19 @@ public:
 
     string dumpToString();
 
-    void dumpToFile(string fileName = "todostorage.csv") {
+    void dumpToFile(string fileName = ".todostorage.csv") {
         Functions::dumpToFile(this->dumpToString(), fileName);
     }
 
     Todo();
 
+    Todo(vector<string>);
+
     Todo(const string &name, const vector<int> &dueDate);
+
+    virtual ~Todo() {
+        this->dumpToFile();
+    }
 };
 
 

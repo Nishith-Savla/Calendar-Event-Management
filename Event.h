@@ -5,12 +5,15 @@
 #include <vector>
 #include <ctime>
 #include <fstream>
+#include <map>
+#include <functional>
 #include "Functions.cpp"
 
 using namespace std;
 
 
 class Event : public Functions {
+    int id = totalEvents + 1;
     string name;
     string description;
     vector<int> dateOfCompletion;
@@ -19,6 +22,10 @@ class Event : public Functions {
     bool hasCompleted = false;
     static int totalEvents;
 public:
+    int getId() const {
+        return id;
+    }
+
     const string &getName() const {
         return name;
     }
@@ -70,14 +77,19 @@ public:
 
     string dumpToString();
 
-    void dumpToFile(string fileName = "eventstorage.csv") {
+    void dumpToFile(string fileName = ".eventstorage.csv") {
         Functions::dumpToFile(this->dumpToString(), fileName);
     }
 
     Event();
 
-    Event(const string &name, const string &description, vector<int> dateOfCompletion);
+    Event(vector<string>);
 
+    Event(const string &name, const string &description, const vector<int> &dateOfCompletion);
+
+    virtual ~Event() {
+        this->dumpToFile();
+    }
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H

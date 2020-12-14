@@ -5,13 +5,26 @@ Event::Event() {
     this->dateOfCompletion.reserve(3); // create 3 blocks of space in memory
 }
 
-Event::Event(const string &name, const string &description, vector<int> dateOfCompletion) : Event() {
+Event::Event(const string &name, const string &description, const vector<int> &dateOfCompletion) : Event() {
     this->setName(name);
     this->setDescription(description);
-    this->setDateOfCompletion(std::move(dateOfCompletion));
+    this->setDateOfCompletion(dateOfCompletion);
 }
 
 int Event::totalEvents = 0;
+
+Event::Event(vector<string> event) {
+    this->setName(event[0]);
+    this->setDescription(event[1]);
+    this->setHasCompleted(event[2] == "true");
+    vector<int> date;
+    vector<string> dateSplit = Functions::split(event[3], "/");
+    date.reserve(3);
+    for (const auto &i : dateSplit) {
+        date.push_back(stoi(i));
+    }
+    this->setDateOfCompletion(date);
+}
 
 void Event::checkCompleted(const vector<int> &currentDate) {
     if (currentDate[2] > this->dateOfCompletion[2]) {

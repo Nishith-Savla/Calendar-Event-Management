@@ -3,7 +3,7 @@ project(CalendarEventManagement)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(CalendarEventManagement main.cpp Event.cpp Event.h Todo.cpp Todo.h function.cpp)
+add_executable(CalendarEventManagement main.cpp Event.cpp Event.h Todo.cpp Todo.h Functions.cpp)
 
 #include_directories(C:/sqlite)
 #link_directories(C:/sqlite)

@@ -4,20 +4,6 @@
 
 using namespace std;
 
-//vector<string> split(const string &s, const string &delimiter) {
-//    size_t pos_start = 0, pos_end, delimiter_len = delimiter.length();
-//    string token;
-//    vector<string> split_strings;
-//    while ((pos_end = s.find(delimiter, pos_start)) != string::npos) {
-//        token = s.substr(pos_start, pos_end - pos_start);
-//        pos_start = pos_end + delimiter_len;
-//        split_strings.push_back(token);
-//    }
-//    split_strings.push_back(s.substr(pos_start));
-//    return split_strings;
-//
-//}
-
 int main() {
     cout << boolalpha;
     string dateStr = "11/12/2020";
@@ -35,8 +21,17 @@ int main() {
     for (auto a: e1.getDateOfCompletion()) cout << a << " ";
     cout << endl;
     cout << "Has completed? :" << e1.isCompleted() << endl;
+//    e1.dumpToFile();
+
+    Event e2("Test2", "test2", date);
+    cout << "Event name: " << e2.getName() << endl;
+    cout << "Event description: " << e2.getDescription() << endl;
+    cout << "Event date: ";
+    for (auto a: e2.getDateOfCompletion()) cout << a << " ";
+    cout << endl;
+    cout << "Has completed? :" << e2.isCompleted() << endl;
     cout << "Total events: " << Event::getTotalEvents() << endl;
-    e1.dumpToFile();
+//    e2.dumpToFile();
 
     cout << endl;
     Todo t1("Todo 1", date);
@@ -49,4 +44,7 @@ int main() {
     cout << "Has completed? :" << t1.isCompleted() << endl;
     cout << "Total todos: " << Todo::getTotalTodos() << endl;
     t1.dumpToFile();
+//    for (auto a: Event::eventStore) {a->dumpToFile();}
+    vector<Todo> todos;
+    Functions::loadFromFile(".todostorage.csv", todos);
 }

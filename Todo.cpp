@@ -7,6 +7,17 @@ Todo::Todo() {
     this->dueDate.reserve(3); // create 3 blocks of space in memory
 }
 
+Todo::Todo(vector<string> event) {
+    this->setName(event[0]);
+    this->setHasCompleted(event[1] == "true");
+    vector<int> date;
+    vector<string> dateSplit = Functions::split(event[2], "/");
+    for (const auto &i : dateSplit) {
+        date.push_back(stoi(i));
+    }
+    this->setDueDate(date);
+}
+
 Todo::Todo(const string &name, const vector<int> &dueDate) : Todo() {
     this->setName(name);
     this->setDueDate(dueDate);
