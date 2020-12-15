@@ -57,10 +57,6 @@ public:
 
     string dumpToString();
 
-//    void dumpToFile(const string&& fileName = ".todostorage.csv") {
-//        Functions::dumpToFile(this->dumpToString(), fileName);
-//    }
-
     Todo();
 
     explicit Todo(vector<string>);

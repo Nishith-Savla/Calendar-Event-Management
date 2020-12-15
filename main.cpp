@@ -3,11 +3,6 @@
 #include <windows.h>
 
 using namespace std;
-#define HRLINE \
-    CONSOLE_SCREEN_BUFFER_INFO csbi; \
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi); \
-    int width = csbi.srWindow.Right - csbi.srWindow.Left + 1; \
-    for(int i=1; i<=width; i++) std::cout<< "-"; std::cout << std::endl;
 
 int main() {
     cout << boolalpha;
@@ -54,8 +49,9 @@ int main() {
 //    Functions::loadFromFile(".todostorage.csv", "TODO", todos);
 
 //    Show menu
-//
-//    Event e;
-//    Functions::showMenu();
-//    HRLINE
+
+    Functions::showMenu();
+
+    Functions::showIdentifier("Events");
+
 }
