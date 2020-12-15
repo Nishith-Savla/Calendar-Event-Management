@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include "Functions.h"
 
 using namespace std;
 
-class Todo : public Functions{
+class Todo{
     int id = totalTodos + 1;
     string name;
     vector<int> dueDate;
@@ -46,7 +47,6 @@ public:
         return totalTodos;
     }
 
-
     bool markCompleted() {
         if (!isCompleted()) {
             setHasCompleted(true);
@@ -57,15 +57,23 @@ public:
 
     string dumpToString();
 
+    void dumpToFile(const string &fileName=".todostorage.csv") {
+        const string &stringToDump=this->dumpToString();
+        ofstream outputFile;
+        outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::app | ios_base::out);
+        outputFile << stringToDump << endl;
+        outputFile.close();
+    }
+
     Todo();
 
     explicit Todo(vector<string>);
 
     Todo(const string &name, const vector<int> &dueDate);
 
-//    virtual ~Todo() {
-//        this->dumpToFile();
-//    }
+    virtual ~Todo() {
+        this->dumpToFile();
+    }
 };
 
 

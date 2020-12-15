@@ -55,3 +55,32 @@ string Event::dumpToString() {
     }
     return event;
 }
+
+Event Event::addEvent() {
+    string name, description, date;
+    cout << "Enter event name: ";
+    getline(cin, name);
+    cout << "Enter event description: ";
+    getline(cin,description);
+    cout << "Enter event date: ";
+    getline(cin,date);
+    return Event(vector<string> {name, description, date});
+}
+
+void Event::showEvent(Event event) {
+    cout << "Id: " << event.getId() << endl;
+    cout << "Name: " << event.getName() << endl;
+    cout << "Description: " << event.getDescription() << endl;
+    for (auto date: event.getDateOfCompletion()) {cout << date << "/";}
+    cout << endl;
+}
+
+void Event::updateEvent(vector<Event> &eventList, int id) {
+    Event &event = eventList[id+1];
+    string fieldToChange;
+    cout << "Enter the field you want to change: ";
+    getline(cin, fieldToChange);
+    transform(fieldToChange.begin(), fieldToChange.end(), fieldToChange.begin(), ::tolower);
+//    if (!fieldToChange.compare("name")) TODO remaining to complete
+}
+

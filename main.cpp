@@ -54,4 +54,6 @@ int main() {
 
     Functions::showIdentifier("Events");
 
+    Event::showEvent(e1);
+
 }

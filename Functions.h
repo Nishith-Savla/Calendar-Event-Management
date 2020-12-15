@@ -1,7 +1,3 @@
-//
-// Created by acer on 15-12-2020.
-//
-
 #ifndef CALENDAR_EVENT_MANAGEMENT_FUNCTIONS_H
 #define CALENDAR_EVENT_MANAGEMENT_FUNCTIONS_H
 
@@ -11,11 +7,29 @@
 #include <sstream>
 #include <string>
 #include <windows.h>
+#include "Event.h"
+#include "Todo.h"
 
 using namespace std;
 
 class Functions {
 public:
+    int getId(){
+        return 0;
+    }
+
+    string getName(){
+        return nullptr;
+    }
+
+    string getDescription(){
+        return nullptr;
+    }
+
+    vector<int> getDateOfCompletion() {
+        return vector<int> {};
+    }
+
     static vector<string> split(const string &s, const string &delimiter) {
         size_t pos_start = 0, pos_end, delimiter_len = delimiter.length();
         string token;
@@ -28,13 +42,6 @@ public:
         split_strings.push_back(s.substr(pos_start));
         return split_strings;
 
-    }
-
-    static void dumpToFile(const string &stringToDump, const string &fileName) {
-        ofstream outputFile;
-        outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::app | ios_base::out);
-        outputFile << stringToDump << endl;
-        outputFile.close();
     }
 
     static vector<vector<string>> loadFromFile(const string &fileName) {
@@ -60,10 +67,10 @@ public:
     }
 
     static void printHRLine() {
-        CONSOLE_SCREEN_BUFFER_INFO csbi; \
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi); \
-    int width = csbi.srWindow.Right - csbi.srWindow.Left + 1; \
-    for (int i = 1; i <= width; i++) std::cout << "=";
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+        int width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+        for (int i = 1; i <= width; i++) std::cout << "=";
     }
 
     static void showMenu() {
@@ -83,8 +90,6 @@ public:
         cout << "| 4. Delete " + identifier << endl;
         printHRLine();
     }
-
 };
-
 
 #endif //CALENDAR_EVENT_MANAGEMENT_FUNCTIONS_H

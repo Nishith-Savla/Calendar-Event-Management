@@ -5,12 +5,13 @@
 #include <vector>
 #include <ctime>
 #include <fstream>
+#include <algorithm>
 #include "Functions.h"
 
 using namespace std;
 
 
-class Event : public Functions {
+class Event{
     int id = totalEvents + 1;
     string name;
     string description;
@@ -75,9 +76,13 @@ public:
 
     string dumpToString();
 
-//    void dumpToFile(const string &fileName = ".eventstorage.csv") {
-//        Functions::dumpToFile(this->dumpToString(), fileName);
-//    }
+    void dumpToFile(const string &fileName=".eventstorage.csv") {
+        const string &stringToDump=this->dumpToString();
+        ofstream outputFile;
+        outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::app | ios_base::out);
+        outputFile << stringToDump << endl;
+        outputFile.close();
+    }
 
     Event();
 
@@ -85,9 +90,16 @@ public:
 
     Event(const string &name, const string &description, const vector<int> &dateOfCompletion);
 
-//    virtual ~Event() {
-//        this->dumpToFile();
-//    }
+    virtual ~Event() {
+        this->dumpToFile();
+    }
+
+    static Event addEvent();
+
+    static void showEvent(Event event);
+
+    static void updateEvent(vector<Event> &eventList, int id);
+
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H
