@@ -48,10 +48,10 @@ int main() {
     cout << t1.markCompleted() << endl;
     cout << "Has completed? :" << t1.isCompleted() << endl;
     cout << "Total todos: " << Todo::getTotalTodos() << endl;
-    t1.dumpToFile();
-//    for (auto a: Event::eventStore) {a->dumpToFile();}
+//    t1.dumpToFile();
+    //for (auto a: Event::eventStore) {a->dumpToFile();}
 //    vector<Todo> todos;
-//    Functions::loadFromFile(".todostorage.csv", todos);
+//    Functions::loadFromFile(".todostorage.csv", "TODO", todos);
 
 //    Show menu
 //

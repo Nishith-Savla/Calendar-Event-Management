@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <vector>
-#include "Functions.cpp"
+#include "Functions.h"
 
 using namespace std;
 
-class Todo : public Functions {
+class Todo : public Functions{
     int id = totalTodos + 1;
     string name;
     vector<int> dueDate;
@@ -57,9 +57,9 @@ public:
 
     string dumpToString();
 
-    void dumpToFile(const const string&& fileName = ".todostorage.csv") {
-        Functions::dumpToFile(this->dumpToString(), fileName);
-    }
+//    void dumpToFile(const string&& fileName = ".todostorage.csv") {
+//        Functions::dumpToFile(this->dumpToString(), fileName);
+//    }
 
     Todo();
 
@@ -67,9 +67,9 @@ public:
 
     Todo(const string &name, const vector<int> &dueDate);
 
-    virtual ~Todo() {
-        this->dumpToFile();
-    }
+//    virtual ~Todo() {
+//        this->dumpToFile();
+//    }
 };
 
 

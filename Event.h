@@ -5,7 +5,7 @@
 #include <vector>
 #include <ctime>
 #include <fstream>
-#include "Functions.cpp"
+#include "Functions.h"
 
 using namespace std;
 
@@ -75,9 +75,9 @@ public:
 
     string dumpToString();
 
-    void dumpToFile(const string &fileName = ".eventstorage.csv") {
-        Functions::dumpToFile(this->dumpToString(), fileName);
-    }
+//    void dumpToFile(const string &fileName = ".eventstorage.csv") {
+//        Functions::dumpToFile(this->dumpToString(), fileName);
+//    }
 
     Event();
 
@@ -85,9 +85,9 @@ public:
 
     Event(const string &name, const string &description, const vector<int> &dateOfCompletion);
 
-    virtual ~Event() {
-        this->dumpToFile();
-    }
+//    virtual ~Event() {
+//        this->dumpToFile();
+//    }
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H
