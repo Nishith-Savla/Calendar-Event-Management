@@ -57,13 +57,13 @@ public:
 
     string dumpToString();
 
-    void dumpToFile(string fileName = ".todostorage.csv") {
+    void dumpToFile(const const string&& fileName = ".todostorage.csv") {
         Functions::dumpToFile(this->dumpToString(), fileName);
     }
 
     Todo();
 
-    Todo(vector<string>);
+    explicit Todo(vector<string>);
 
     Todo(const string &name, const vector<int> &dueDate);
 

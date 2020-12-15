@@ -5,8 +5,6 @@
 #include <vector>
 #include <ctime>
 #include <fstream>
-#include <map>
-#include <functional>
 #include "Functions.cpp"
 
 using namespace std;
@@ -77,13 +75,13 @@ public:
 
     string dumpToString();
 
-    void dumpToFile(string fileName = ".eventstorage.csv") {
+    void dumpToFile(const string &fileName = ".eventstorage.csv") {
         Functions::dumpToFile(this->dumpToString(), fileName);
     }
 
     Event();
 
-    Event(vector<string>);
+    explicit Event(vector<string>);
 
     Event(const string &name, const string &description, const vector<int> &dateOfCompletion);
 

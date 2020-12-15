@@ -10,7 +10,6 @@
 using namespace std;
 
 class Functions {
-    static string userprofile;
 public:
     static vector<string> split(const string &s, const string &delimiter) {
         size_t pos_start = 0, pos_end, delimiter_len = delimiter.length();
@@ -28,14 +27,14 @@ public:
 
     static void dumpToFile(const string &stringToDump, const string &fileName) {
         ofstream outputFile;
-        outputFile.open(userprofile + "/" + fileName, ios_base::app | ios_base::out);
+        outputFile.open((string)getenv("USERPROFILE") + "/" + fileName, ios_base::app | ios_base::out);
         outputFile << stringToDump << endl;
         outputFile.close();
     }
 
     static void loadFromFile(const string &fileName, auto &objectCollection) {
         ifstream inputFile;
-        inputFile.open(userprofile + "/" + fileName);
+        inputFile.open((string)getenv("USERPROFILE") + "/" + fileName);
         string line, temp;
         vector<string> events;
         while (inputFile >> temp) {
@@ -53,7 +52,9 @@ public:
         }
     }
 
+    static void showMenu() {
+        cout << "=============================";
+    }
 };
 
-string Functions::userprofile = getenv("USERPROFILE");
 #endif // CALENDAREVENTMANAGEMENT_FUNCTION_CPP

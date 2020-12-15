@@ -1,8 +1,13 @@
 #include "Event.h"
 #include "Todo.h"
-#include "Functions.cpp"
+#include <windows.h>
 
 using namespace std;
+#define HRLINE \
+    CONSOLE_SCREEN_BUFFER_INFO csbi; \
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi); \
+    int width = csbi.srWindow.Right - csbi.srWindow.Left + 1; \
+    for(int i=1; i<=width; i++) std::cout<< "-"; std::cout << std::endl;
 
 int main() {
     cout << boolalpha;
@@ -45,6 +50,12 @@ int main() {
     cout << "Total todos: " << Todo::getTotalTodos() << endl;
     t1.dumpToFile();
 //    for (auto a: Event::eventStore) {a->dumpToFile();}
-    vector<Todo> todos;
-    Functions::loadFromFile(".todostorage.csv", todos);
+//    vector<Todo> todos;
+//    Functions::loadFromFile(".todostorage.csv", todos);
+
+//    Show menu
+//
+//    Event e;
+//    Functions::showMenu();
+//    HRLINE
 }
