@@ -7,7 +7,7 @@ Todo::Todo() {
     this->dueDate.reserve(3); // create 3 blocks of space in memory
 }
 
-Todo::Todo(vector<string> event) {
+Todo::Todo(vector<string> event) : Todo() {
     this->setName(event[0]);
     this->setHasCompleted(event[1] == "true");
     vector<int> date;
@@ -18,7 +18,7 @@ Todo::Todo(vector<string> event) {
     this->setDueDate(date);
 }
 
-Todo::Todo(const string &name, const vector<int> &dueDate) : Todo() {
+Todo::Todo(const string &name, vector<int> dueDate) : Todo() {
     this->setName(name);
     this->setDueDate(dueDate);
 }
@@ -31,4 +31,68 @@ string Todo::dumpToString() {
         todo.append(to_string(dateValue)).append(" ");
     }
     return todo;
+}
+
+// Add todo
+
+Todo Todo::addTodo() {
+    string name, description, date;
+    cout << "Enter event name: ";
+    getline(cin, name);
+    cout << "Enter event description: ";
+    getline(cin, description);
+    cout << "Enter event date: ";
+    getline(cin, date);
+    return Todo(vector<string> {name, description, date});
+}
+
+void Todo::showTodo(Todo todo) {
+    cout << "Id: " << todo.getId() << endl;
+    cout << "Name: " << todo.getName() << endl;
+    cout << "Date: ";
+    vector<int> dueDate = todo.getDueDate();
+    for (auto date = dueDate.begin(); date != dueDate.end(); ++date) {
+        cout << *date;
+        if (date + 1 != dueDate.end())
+            cout << "/";
+    }
+    cout << endl;
+    cout << "Has occurred: " <<  todo.isCompleted() << endl;
+}
+
+void Todo::updateTodo(vector<Todo> &todolist) {
+    int Id;
+    string fieldToChange, newValue;
+    cout << "Enter the Id of the todo you want to update: ";
+    cin >> Id;
+    Todo& todo = todolist[Id - 1];
+    cout << "Enter the field you want to change: ";
+    cin.ignore();
+    getline(cin, fieldToChange);
+    transform(fieldToChange.begin(), fieldToChange.end(), fieldToChange.begin(), ::tolower);
+    if (fieldToChange == "name") {
+        cout << "Enter new " << fieldToChange << " for the event: ";
+        getline(cin, newValue);
+        todo.setName(newValue);
+    }else if (fieldToChange == "date") {
+        cout << "Enter new " << fieldToChange << " for the event: ";
+        getline(cin, newValue);
+        todo.setDueDate(Functions::split(newValue));
+    }else if (fieldToChange == "status") {
+        cout << "Enter new " << fieldToChange << " for the event(true/false): ";
+        getline(cin, newValue);
+        todo.setHasCompleted(newValue == "true");
+    } else {
+        cerr << "Please enter a valid field (name/date/status):" << endl;
+        updateTodo(todolist);
+    }
+}
+
+void Todo::deleteTodo(vector<Todo> &todolist) {
+    int Id;
+    cout << "Enter the Id of the event you want to delete: ";
+    cin >> Id;
+    if(todolist.size() > Id-1) {
+        todolist.erase(todolist.begin() + Id - 1);
+    }
 }

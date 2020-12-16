@@ -31,8 +31,15 @@ public:
         return dueDate;
     }
 
-    void setDueDate(const vector<int> &dueDate) {
+    void setDueDate(vector<int> dueDate) {
         this->dueDate = dueDate;
+    }
+
+    void setDueDate(const vector<string> &dueDate) {
+        this->dueDate.clear();
+        for (const auto &i : dueDate) {
+            this->dueDate.push_back(stoi(i));
+        }
     }
 
     bool isCompleted() const {
@@ -78,8 +85,15 @@ public:
 
     explicit Todo(vector<string>);
 
-    Todo(const string &name, const vector<int> &dueDate);
+    Todo(const string &name, vector<int> dueDate);
 
+    static Todo addTodo();
+
+    static void showTodo(Todo todo);
+
+    static void updateTodo(vector<Todo> &todolist);
+
+    static void deleteTodo(vector<Todo> &todolist);
 };
 
 

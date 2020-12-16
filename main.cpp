@@ -43,8 +43,17 @@ int main() {
     cout << t1.markCompleted() << endl;
     cout << "Has completed? :" << t1.isCompleted() << endl;
     cout << "Total todos: " << Todo::getTotalTodos() << endl;
-//    t1.dumpToFile();
-    //for (auto a: Event::eventStore) {a->dumpToFile();}
+
+    cout << endl;
+    Todo t2("Todo 1", date);
+    cout << "Todo name: " << t2.getName() << endl;
+    cout << "Todo due date: ";
+    for (auto a: t2.getDueDate()) cout << a << " ";
+    cout << endl;
+    cout << "Has completed? :" << t2.isCompleted() << endl;
+    cout << t2.markCompleted() << endl;
+    cout << "Has completed? :" << t2.isCompleted() << endl;
+    cout << "Total todos: " << Todo::getTotalTodos() << endl;
 //    vector<Todo> todos;
 //    Functions::loadFromFile(".todostorage.csv", "TODO", todos);
 
@@ -69,5 +78,12 @@ int main() {
 //        cout << a.getId() << endl;
 //        cout << a.dumpToString() << endl;
 //    }
+
+    vector<Todo> todoList {t1,t2};
+    Todo::updateTodo(todoList);
+    Todo::showTodo(todoList[1]);
+    cout << todoList.size() << endl;
+    Todo::deleteTodo(todoList);
+    cout << todoList.size() << endl;
     cin.get();
 }
