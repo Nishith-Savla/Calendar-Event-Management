@@ -5,15 +5,7 @@ Event::Event() {
     this->dateOfCompletion.reserve(3); // create 3 blocks of space in memory
 }
 
-Event::Event(const string &name, const string &description, const vector<int> &dateOfCompletion) : Event() {
-    this->setName(name);
-    this->setDescription(description);
-    this->setDateOfCompletion(dateOfCompletion);
-}
-
-int Event::totalEvents = 0;
-
-Event::Event(vector<string> event) {
+Event::Event(vector<string> event) : Event() {
     this->setName(event[0]);
     this->setDescription(event[1]);
     vector<int> date;
@@ -25,6 +17,14 @@ Event::Event(vector<string> event) {
     this->setDateOfCompletion(date);
     this->checkCompleted(getTodaysDate());
 }
+
+Event::Event(const string &name, const string &description, const vector<int> &dateOfCompletion) : Event() {
+    this->setName(name);
+    this->setDescription(description);
+    this->setDateOfCompletion(dateOfCompletion);
+}
+
+int Event::totalEvents = 0;
 
 void Event::checkCompleted(const vector<int> &currentDate) {
     if (currentDate[2] > this->dateOfCompletion[2]) {
@@ -78,15 +78,15 @@ void Event::showEvent(Event event) {
             cout << "/";
     }
     cout << endl;
-    cout << "Has occured: " <<  event.isCompleted() << endl;
+    cout << "Has occurred: " <<  event.isCompleted() << endl;
 }
 
-void Event::updateEvent(vector<Event> *eventList) { // TODO event not updating
+void Event::updateEvent(vector<Event> &eventList) { // TODO event not working
     int Id;
-    Event *event = &(*eventList)[Id + 1];
     string fieldToChange, newValue;
     cout << "Enter the Id of the event you want to update: ";
     cin >> Id;
+    Event& event = eventList[Id - 1];
     cout << "Enter the field you want to change: ";
     cin.ignore();
     getline(cin, fieldToChange);
@@ -94,26 +94,26 @@ void Event::updateEvent(vector<Event> *eventList) { // TODO event not updating
     if (fieldToChange == "name") {
         cout << "Enter new " << fieldToChange << " for the event: ";
         getline(cin, newValue);
-        event->setName(newValue);
+        event.setName(newValue);
     } else if (fieldToChange == "description") {
         cout << "Enter new " << fieldToChange << " for the event: ";
         getline(cin, newValue);
-        event->setDescription(newValue);
+        event.setDescription(newValue);
     } else if (fieldToChange == "date") {
         cout << "Enter new " << fieldToChange << " for the event: ";
         getline(cin, newValue);
-        event->setDateOfCompletion(Functions::split(newValue));
+        event.setDateOfCompletion(Functions::split(newValue));
     } else {
         cerr << "Please enter a valid field (name/description/date):" << endl;
         updateEvent(eventList);
     }
 }
-void Event::deleteEvent(vector<Event> *eventList) {
+void Event::deleteEvent(vector<Event> &eventList) {
     int Id;
     cout << "Enter the Id of the event you want to delete: ";
     cin >> Id;
-    if(eventList->size() > Id-1) {
-        eventList->erase(eventList->begin() + Id - 1);
+    if(eventList.size() > Id-1) {
+        eventList.erase(eventList.begin() + Id - 1);
     }
 }
 

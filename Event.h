@@ -106,9 +106,9 @@ public:
 
     static void showEvent(Event event);
 
-    static void updateEvent(vector<Event> *eventList);
+    static void updateEvent(vector<Event> &eventList);
 
-    static void deleteEvent(vector<Event> *eventList);
+    static void deleteEvent(vector<Event> &eventList);
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H

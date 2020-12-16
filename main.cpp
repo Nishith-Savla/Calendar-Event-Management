@@ -57,14 +57,14 @@ int main() {
 //    Event e3 = Event::addEvent();
 //    Event::showEvent(e3);
     vector<Event> eventList {e1, e2};
-    Event::updateEvent(&eventList);
-    Event::showEvent(e2);
+    Event::updateEvent(eventList);
+    Event::showEvent(eventList[1]);
     cout << eventList.size() << endl;
-    Event::deleteEvent(&eventList);
+    Event::deleteEvent(eventList);
     cout << eventList.size() << endl;
-    for (const auto &a: eventList) {
+    for (Event a: eventList) {
         cout << a.getId() << endl;
+        cout << a.dumpToString() << endl;
     }
-
     cin.get();
 }
