@@ -59,12 +59,15 @@ int main() {
     vector<Event> eventList {e1, e2};
     Event::updateEvent(eventList);
     Event::showEvent(eventList[1]);
-    cout << eventList.size() << endl;
-    Event::deleteEvent(eventList);
-    cout << eventList.size() << endl;
-    for (Event a: eventList) {
-        cout << a.getId() << endl;
-        cout << a.dumpToString() << endl;
-    }
+    eventList.push_back(Event::addEvent());
+    Event::dumpAllToFile(eventList);
+//    cout << eventList[1].getName() << endl;
+//    cout << eventList.size() << endl;
+//    Event::deleteEvent(eventList);
+//    cout << eventList.size() << endl;
+//    for (Event a: eventList) {
+//        cout << a.getId() << endl;
+//        cout << a.dumpToString() << endl;
+//    }
     cin.get();
 }

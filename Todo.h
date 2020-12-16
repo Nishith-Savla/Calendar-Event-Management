@@ -65,15 +65,21 @@ public:
         outputFile.close();
     }
 
+    static void dumpAllToFile(vector<Todo> todos, const string &fileName=".todostorage.csv") {
+        ofstream outputFile;
+        outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::out);
+        for (auto todo: todos) {
+            outputFile << todo.dumpToString() << endl;
+        }
+        outputFile.close();
+    }
+
     Todo();
 
     explicit Todo(vector<string>);
 
     Todo(const string &name, const vector<int> &dueDate);
 
-    virtual ~Todo() {
-        this->dumpToFile();
-    }
 };
 
 

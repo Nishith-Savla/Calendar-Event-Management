@@ -92,15 +92,20 @@ public:
         outputFile.close();
     }
 
+    static void dumpAllToFile(vector<Event> events,  const string &fileName=".eventstorage.csv") {
+        ofstream outputFile;
+        outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::out);
+        for (auto event: events) {
+            outputFile << event.dumpToString() << endl;
+        }
+        outputFile.close();
+    }
+
     Event();
 
     explicit Event(vector<string>);
 
     Event(const string &name, const string &description, const vector<int> &dateOfCompletion);
-
-    virtual ~Event() {
-        this->dumpToFile();
-    }
 
     static Event addEvent();
 
