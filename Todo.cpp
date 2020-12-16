@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "Todo.h"
 
 int Todo::totalTodos = 0;

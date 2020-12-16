@@ -51,25 +51,47 @@ public:
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
         int width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-        for (int i = 1; i <= width; i++) std::cout << "=";
+        for (int i = 1; i <= width; i++) std::cout << "-";
+    }
+
+    static void printBlankSpaces(int num) {
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+        int width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+        for (int i = 1; i <= width - num - 1; i++) std::cout << " ";
     }
 
     static void showMenu() {
         printHRLine();
-        cout << "| 1. Manage Events\n";
-        cout << "| 2. Manage Todos\n";
-        cout << "| 3. Exit\n";
+        cout << "| 1. Manage Events";
+        printBlankSpaces(18);
+        cout << "|";
+        cout << "| 2. Manage Todos";
+        printBlankSpaces(17);
+        cout << "|";
+        cout << "| 3. Exit";
+        printBlankSpaces(9);
+        cout << "|";
         printHRLine();
-        cout << endl << endl;
+        cout << endl;
     }
 
     static void showIdentifier(string identifier) {
         printHRLine();
-        cout << "| 1. Add " + identifier << endl;
-        cout << "| 2. View " + identifier << endl;
-        cout << "| 3. Update " + identifier << endl;
-        cout << "| 4. Delete " + identifier << endl;
+        cout << "| 1. Add " + identifier;
+        printBlankSpaces(15);
+        cout << "|";
+        cout << "| 2. View " << identifier;
+        printBlankSpaces(16);
+        cout << "|";
+        cout << "| 3. Update " + identifier;
+        printBlankSpaces(18);
+        cout << "|";
+        cout << "| 4. Delete " + identifier;
+        printBlankSpaces(18);
+        cout << "|";
         printHRLine();
+        cout << endl;
     }
 };
 
