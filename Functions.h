@@ -30,7 +30,7 @@ public:
         return vector<int> {};
     }
 
-    static vector<string> split(const string &s, const string &delimiter) {
+    static vector<string> split(const string &s, const string &delimiter="/") {
         size_t pos_start = 0, pos_end, delimiter_len = delimiter.length();
         string token;
         vector<string> split_strings;

@@ -8,7 +8,7 @@ int main() {
     cout << boolalpha;
     string dateStr = "11/12/2020";
     vector<int> date;
-    vector<string> dateSplit = Functions::split(dateStr, "/");
+    vector<string> dateSplit = Functions::split(dateStr);
     date.reserve(dateSplit.size()); // create space in memory equal to size of dateSplit
     for (const auto &i : dateSplit) {
         date.push_back(stoi(i));
@@ -54,6 +54,17 @@ int main() {
 
     Functions::showIdentifier("Events");
 
-    Event::showEvent(e1);
+//    Event e3 = Event::addEvent();
+//    Event::showEvent(e3);
+    vector<Event> eventList {e1, e2};
+    Event::updateEvent(&eventList);
+    Event::showEvent(e2);
+    cout << eventList.size() << endl;
+    Event::deleteEvent(&eventList);
+    cout << eventList.size() << endl;
+    for (const auto &a: eventList) {
+        cout << a.getId() << endl;
+    }
 
+    cin.get();
 }

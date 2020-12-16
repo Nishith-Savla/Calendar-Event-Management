@@ -50,6 +50,14 @@ public:
         this->checkCompleted(getTodaysDate());
     }
 
+    void setDateOfCompletion(const vector<string> &dateOfCompletion) {
+        this->dateOfCompletion.clear();
+        for (const auto &i : dateOfCompletion) {
+            this->dateOfCompletion.push_back(stoi(i));
+        }
+        this->checkCompleted(getTodaysDate());
+    }
+
     bool isCompleted() const {
         return hasCompleted;
     }
@@ -98,8 +106,9 @@ public:
 
     static void showEvent(Event event);
 
-    static void updateEvent(vector<Event> &eventList, int id);
+    static void updateEvent(vector<Event> *eventList);
 
+    static void deleteEvent(vector<Event> *eventList);
 };
 
 #endif //CALENDAREVENTMANAGEMENT_EVENT_H
