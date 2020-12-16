@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 class Event{
     int id = totalEvents + 1;
     string name;
@@ -92,7 +91,7 @@ public:
         outputFile.close();
     }
 
-    static void dumpAllToFile(vector<Event> events,  const string &fileName=".eventstorage.csv") {
+    static void dumpAllToFile(vector<Event> events, const string &fileName=".eventstorage.csv") {
         ofstream outputFile;
         outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::out);
         for (auto event: events) {

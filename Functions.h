@@ -27,11 +27,13 @@ public:
 
     static vector<vector<string>> loadFromFile(const string &fileName) {
         ifstream inputFile;
-        inputFile.open((string) getenv("USERPROFILE") + "/" + fileName);
-        string line, temp;
+        inputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::in);
+        if (inputFile.bad()) {
+            return vector<vector<string>> {};
+        }
+        string line;
         vector<string> entities;
-        while (inputFile >> temp) {
-            getline(inputFile, line);
+        while (inputFile >> line) {
             entities.push_back(line);
         }
         vector<vector<string>> objects;
@@ -47,21 +49,24 @@ public:
         return objects;
     }
 
-    static void printHRLine() {
+    static int inline getConsoleWidth() {
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
         int width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+        return width;
+    }
+
+    static void printHRLine() {
+        int width = getConsoleWidth();
         for (int i = 1; i <= width; i++) std::cout << "-";
     }
 
     static void printBlankSpaces(int num) {
-        CONSOLE_SCREEN_BUFFER_INFO csbi;
-        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-        int width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+        int width = getConsoleWidth();
         for (int i = 1; i <= width - num - 1; i++) std::cout << " ";
     }
 
-    static void showMenu() {
+    static void showMainMenu() {
         printHRLine();
         cout << "| 1. Manage Events";
         printBlankSpaces(18);
@@ -76,19 +81,22 @@ public:
         cout << endl;
     }
 
-    static void showIdentifier(string identifier) {
+    static void showIdentifier(const string& identifier) {
         printHRLine();
-        cout << "| 1. Add " + identifier;
-        printBlankSpaces(15);
+        cout << "| 1. Add " + identifier + ' ';
+        printBlankSpaces(15-(identifier=="todo"));
         cout << "|";
-        cout << "| 2. View " << identifier;
-        printBlankSpaces(16);
+        cout << "| 2. View " + identifier + 's';
+        printBlankSpaces(16-(identifier=="todo"));
         cout << "|";
-        cout << "| 3. Update " + identifier;
-        printBlankSpaces(18);
+        cout << "| 3. Update " + identifier + ' ';
+        printBlankSpaces(18-(identifier=="todo"));
         cout << "|";
-        cout << "| 4. Delete " + identifier;
-        printBlankSpaces(18);
+        cout << "| 4. Delete " + identifier + ' ';
+        printBlankSpaces(18-(identifier=="todo"));
+        cout << "|";
+        cout << "| 0. Main Menu";
+        printBlankSpaces(14);
         cout << "|";
         printHRLine();
         cout << endl;

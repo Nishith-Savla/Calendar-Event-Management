@@ -28,8 +28,10 @@ string Todo::dumpToString() {
     string todo;
     todo.append(this->name).append(",");
     todo.append(this->hasCompleted ? "true" : "false").append(",");
-    for (auto dateValue: this->dueDate) {
-        todo.append(to_string(dateValue)).append(" ");
+    for (auto date = dueDate.begin(); date != dueDate.end(); ++date) {
+        todo.append(to_string(*date));
+        if (date + 1 != dueDate.end())
+            todo.append("/");
     }
     return todo;
 }
@@ -37,14 +39,13 @@ string Todo::dumpToString() {
 // Add todo
 
 Todo Todo::addTodo() {
-    string name, description, date;
-    cout << "Enter event name: ";
+    string name, date;
+    cout << "Enter todo name: ";
+    cin.ignore();
     getline(cin, name);
-    cout << "Enter event description: ";
-    getline(cin, description);
-    cout << "Enter event date: ";
+    cout << "Enter todo due date: ";
     getline(cin, date);
-    return Todo(vector<string> {name, description, date});
+    return Todo(vector<string> {name, "false", date});
 }
 
 void Todo::showTodo(Todo todo) {
