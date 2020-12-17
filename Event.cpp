@@ -104,7 +104,9 @@ void Event::updateEvent(vector<Event> &eventList) {
         cerr << "Please enter a valid field (name/description/date):" << endl;
         updateEvent(eventList);
     }
+    Functions::printHRLine();
     showEvent(event);
+    Functions::printHRLine();
 }
 
 void Event::deleteEvent(vector<Event> &eventList) {

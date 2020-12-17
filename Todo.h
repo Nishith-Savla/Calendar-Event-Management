@@ -64,7 +64,7 @@ public:
 
     string dumpToString();
 
-    void dumpToFile(const string &fileName=".todostorage.csv") {
+    void dumpToFile(const string &fileName=".todostorage(do_not_modify).csv") {
         const string &stringToDump=this->dumpToString();
         ofstream outputFile;
         outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::app | ios_base::out);
@@ -72,7 +72,7 @@ public:
         outputFile.close();
     }
 
-    static void dumpAllToFile(vector<Todo> todos, const string &fileName=".todostorage.csv") {
+    static void dumpAllToFile(vector<Todo> todos, const string &fileName=".todostorage(do_not_modify).csv") {
         ofstream outputFile;
         outputFile.open((string) getenv("USERPROFILE") + "/" + fileName, ios_base::out);
         for (auto todo: todos) {

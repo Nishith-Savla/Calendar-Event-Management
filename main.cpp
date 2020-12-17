@@ -11,8 +11,14 @@ int main() {
     cout << boolalpha;
     vector<Event> events;
     vector<Todo> todos;
-    for (const auto& eventStr : Functions::loadFromFile(".eventstorage.csv")) events.emplace_back(Event(eventStr));
-    for (const auto& todoStr : Functions::loadFromFile(".todostorage.csv")) todos.emplace_back(Todo(todoStr));
+    for (const auto& eventStr : Functions::loadFromFile(".eventstorage(do_not_modify).csv")) {
+        if(!eventStr.empty())
+            events.emplace_back(Event(eventStr));
+    }
+    for (const auto& todoStr : Functions::loadFromFile(".todostorage(do_not_modify).csv")) {
+        if (!todoStr.empty())
+            todos.emplace_back(Todo(todoStr));
+    }
     manageMainMenu(events, todos);
 }
 
@@ -60,17 +66,40 @@ int manageMenu(string option, vector<Event> &events, vector<Todo> &todos) {
         case 1:
             // Add - Adding event functionality
             cout << "Adding functionality for " << option << "s\n";
-            isEvent ? events.push_back(Event::addEvent()) : todos.push_back(Todo::addTodo());
+            if(isEvent) {
+                Event newEvent = Event::addEvent();
+                events.push_back(newEvent);
+                Functions::printHRLine();
+                Event::showEvent(newEvent);
+                Functions::printHRLine();
+            }else {
+                Todo newTodo = Todo::addTodo();
+                todos.push_back(newTodo);
+                Functions::printHRLine();
+                Todo::showTodo(newTodo);
+                Functions::printHRLine();
+            }
+
             Functions::showIdentifier(option);
             manageMenu(option, events, todos);
             break;
         case 2:
             // Add - View events functionality
             cout << "View functionality for " << option << "s\n";
-            if(isEvent)
-                for(const auto& event : events) Event::showEvent(event);
-            else
-                for(const auto& todo : todos) Todo::showTodo(todo);
+            if(isEvent) {
+                for (const auto &event : events) {
+                    Functions::printHRLine();
+                    Event::showEvent(event);
+                    Functions::printHRLine();
+                }
+            }
+            else {
+                for (const auto &todo : todos) {
+                    Functions::printHRLine();
+                    Todo::showTodo(todo);
+                    Functions::printHRLine();
+                }
+            }
             Functions::showIdentifier(option);
                 manageMenu(option, events, todos);
             break;
