@@ -31,10 +31,11 @@ public:
         if (inputFile.bad()) {
             return vector<vector<string>> {};
         }
-        string line;
+        string line, temp;
         vector<string> entities;
-        while (inputFile >> line) {
-            entities.push_back(line);
+        while (inputFile >> temp) {
+            getline(inputFile, line, '\n');
+            entities.push_back(temp+line);
         }
         vector<vector<string>> objects;
         for (const auto &entity: entities) {

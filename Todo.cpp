@@ -59,7 +59,7 @@ void Todo::showTodo(Todo todo) {
             cout << "/";
     }
     cout << endl;
-    cout << "Has occurred: " <<  todo.isCompleted() << endl;
+    cout << "Has completed: " <<  todo.isCompleted() << endl;
 }
 
 void Todo::updateTodo(vector<Todo> &todolist) {
